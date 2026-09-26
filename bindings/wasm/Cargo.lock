@@ -690,6 +690,7 @@ dependencies = [
 [[package]]
 name = "ptr_hash"
 version = "2.1.1"
+source = "git+https://github.com/daaain/PtrHash?branch=claude%2Feloquent-rubin-6u1o9u#71fe46ed26d14153cbd6b4e2a399ee5369ff1bbf"
 dependencies = [
  "bitvec",
  "colored",
@@ -704,7 +705,6 @@ dependencies = [
  "rayon",
  "rdst",
  "tempfile",
- "web-time",
  "xxhash-rust",
 ]
 
@@ -1258,16 +1258,6 @@ name = "web-sys"
 version = "0.3.105"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9fbddc4a036f00ec4f18c83445bd3115cb306a91da554919a099d9222fe4a7f8"
-dependencies = [
- "js-sys",
- "wasm-bindgen",
-]
-
-[[package]]
-name = "web-time"
-version = "1.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5a6580f308b1fad9207618087a65c04e7a10bc77e02c8e84e9b00dd4b12fa0bb"
 dependencies = [
  "js-sys",
  "wasm-bindgen",

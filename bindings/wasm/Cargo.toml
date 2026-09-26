@@ -38,8 +38,9 @@ js-sys = "0.3"
 wasm-bindgen-test = "0.3"
 
 [patch.crates-io]
-# ptr_hash called Instant::now which crashes on web targets, the vendored source replaces it with a web-compatible lib
-ptr_hash = { path = "vendor/ptr_hash" }
+# ptr_hash calls Instant::now, which panics on wasm32-unknown-unknown, until
+# https://github.com/RagnarGrootKoerkamp/PtrHash (fix on daaain's fork) is released
+ptr_hash = { git = "https://github.com/daaain/PtrHash", branch = "claude/eloquent-rubin-6u1o9u" }
 
 [profile.release]
 lto = true
