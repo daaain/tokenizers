@@ -82,6 +82,17 @@ impl Tokenizer {
         self.0
             .decode_tokens(ids, skip_special_tokens.unwrap_or(false))
     }
+
+    /// Decodes each id on its own, running the decoder, so every token reads as it does in the
+    /// text: a byte-level BPE token reads ` world`, not `Ġworld`. Special tokens are kept.
+    ///
+    /// @param ids - The ids to decode. Can be the result of {@link Tokenizer.encode}.
+    /// @returns The text of each id, in order.
+    pub fn decode_each(&self, ids: &[u32]) -> Result<Vec<String>, JsError> {
+        ids.iter()
+            .map(|&id| self.0.decode(&[id], false).map_err(js_err))
+            .collect()
+    }
 }
 
 fn js_err(err: Box<dyn std::error::Error + Send + Sync>) -> JsError {

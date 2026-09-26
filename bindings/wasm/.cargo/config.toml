@@ -3,4 +3,5 @@ target = "wasm32-unknown-unknown"
 
 [target.wasm32-unknown-unknown]
 # Required to compile getrandom for a browser target
-rustflags = ['--cfg', 'getrandom_backend="wasm_js"']
+# simd128 turns on bitcannon's wasm SIMD pre-tokenizer, which is compiled out without it
+rustflags = ['-C', 'target-feature=+simd128', '--cfg', 'getrandom_backend="wasm_js"']
